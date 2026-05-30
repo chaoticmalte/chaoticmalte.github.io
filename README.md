@@ -4,7 +4,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="ChaoticMalte — Minecraft Entwickler, Server Administrator und Webentwickler. Verfügbar für Projekte.">
 	<meta name="author" content="ChaoticMalte">
-	<title>ChaoticMalte | Portfolio</title>
+	<title>ChaoticMalte | Premium Portfolio</title>
 	<style>
 		*{margin:0;padding:0;box-sizing:border-box;font-family:Segoe UI,sans-serif;scroll-behavior:smooth}
 		:root{--bg:#0d1117;--muted:#8b949e;--card:#161b22}
@@ -49,10 +49,14 @@
 		<div class="wrap">
 			<div><b>ChaoticMalte</b></div>
 			<div class="links">
-				<a href="#about">Über mich</a>
-				<a href="#stats">Statistiken</a>
-				<a href="#projects">Projekte</a>
-				<a href="#contact">Kontakt</a>
+				<a id="nav-about" href="#about">Über mich</a>
+				<a id="nav-stats" href="#stats">Statistiken</a>
+				<a id="nav-projects" href="#projects">Projekte</a>
+				<a id="nav-contact" href="#contact">Kontakt</a>
+			</div>
+			<div aria-label="Sprache wählen">
+				<button id="lang-de" aria-pressed="true">DE</button>
+				<button id="lang-en" aria-pressed="false">EN</button>
 			</div>
 		</div>
 	</nav>
@@ -60,11 +64,11 @@
 	<main id="main">
 		<header>
 			<div>
-				<h1>ChaoticMalte</h1>
-				<p class="subtitle">Minecraft Entwickler • Server Administrator • Webentwickler</p>
-				<p class="badge" aria-hidden="true">🟢 Verfügbar für neue Projekte</p>
+				<h1 id="hero-name">ChaoticMalte</h1>
+				<p id="hero-sub" class="subtitle">Minecraft Entwickler • Server Administrator • Webentwickler</p>
+				<p id="hero-badge" class="badge" aria-hidden="true">🟢 Verfügbar für neue Projekte</p>
 				<br>
-				<a class="btn" href="#contact" aria-label="Zum Kontaktbereich springen">Kontakt aufnehmen</a>
+				<a id="hero-contact-btn" class="btn" href="#contact" aria-label="Zum Kontaktbereich springen">Kontakt aufnehmen</a>
 			</div>
 		</header>
 
@@ -142,10 +146,51 @@
 
 		<section id="contact" aria-labelledby="contact-heading">
 			<h2 id="contact-heading" class="title">Kontakt</h2>
-			<div class="card" style="text-align:center">
-				<h3>Discord</h3>
-				<p style="margin-top:10px;font-size:1.2rem;color:#00d4ff">hakubaa_</p>
-				<p style="margin-top:15px">Antwortzeit normalerweise unter 24 Stunden.</p>
+			<div class="grid">
+				<div class="card" style="text-align:center">
+					<h3 id="contact-primary-title">Direkt kontaktieren</h3>
+					<p style="margin-top:10px;font-size:1.1rem;color:#00d4ff" id="contact-discord">Discord: hakubaa_</p>
+					<p style="margin-top:10px" id="contact-email">E-Mail: <a href="mailto:hakubaa@example.com" id="mailto-link">hakubaa@example.com</a></p>
+					<p style="margin-top:10px">Antwortzeit normalerweise unter 24 Stunden.</p>
+					<p style="margin-top:12px">
+						<a id="link-telegram" href="https://t.me/hakubaa" target="_blank" rel="noopener">Telegram</a> ·
+						<a id="link-whatsapp" href="https://wa.me/4915112345678" target="_blank" rel="noopener">WhatsApp</a> ·
+						<a id="link-linkedin" href="https://www.linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+					</p>
+				</div>
+
+				<div class="card">
+					<h3 id="contact-form-title">Kontaktformular</h3>
+					<form id="contact-form" aria-label="Kontaktformular">
+						<label for="c-name" id="lbl-name">Name</label>
+						<input id="c-name" name="name" type="text" required placeholder="Dein Name" style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid #30363d;background:#0b0f13;color:#fff">
+
+						<label for="c-email" id="lbl-email" style="margin-top:12px;display:block">E-Mail</label>
+						<input id="c-email" name="email" type="email" required placeholder="dein@email.de" style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid #30363d;background:#0b0f13;color:#fff">
+
+						<label for="c-country" id="lbl-country" style="margin-top:12px;display:block">Land</label>
+						<select id="c-country" name="country" style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid #30363d;background:#0b0f13;color:#fff">
+							<option value="DE">Germany</option>
+							<option value="AT">Austria</option>
+							<option value="CH">Switzerland</option>
+							<option value="US">United States</option>
+							<option value="GB">United Kingdom</option>
+							<option value="OTHER">Other</option>
+						</select>
+
+						<label for="c-phone" id="lbl-phone" style="margin-top:12px;display:block">Telefon (optional)</label>
+						<input id="c-phone" name="phone" type="tel" placeholder="+49 151 12345678" style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid #30363d;background:#0b0f13;color:#fff">
+
+						<label for="c-msg" id="lbl-message" style="margin-top:12px;display:block">Nachricht</label>
+						<textarea id="c-msg" name="message" rows="5" required placeholder="Schreibe mir..." style="width:100%;margin-top:6px;padding:10px;border-radius:8px;border:1px solid #30363d;background:#0b0f13;color:#fff"></textarea>
+
+						<div style="margin-top:12px;display:flex;gap:8px;align-items:center">
+							<button type="submit" id="contact-submit" class="btn">Senden</button>
+							<button type="button" id="contact-reset" style="background:#222;color:#fff;padding:10px 14px;border-radius:8px;border:1px solid #30363d">Zurücksetzen</button>
+						</div>
+						<p id="contact-feedback" class="sr-only" role="status"></p>
+					</form>
+				</div>
 			</div>
 		</section>
 	</main>
@@ -155,5 +200,121 @@
 		Minecraft Entwickler • Server Administrator • Webentwickler<br><br>
 		Discord: hakubaa_
 	</footer>
+	<script>
+		(function(){
+			const translations = {
+				de: {
+					'nav-about':'Über mich',
+					'nav-stats':'Statistiken',
+					'nav-projects':'Projekte',
+					'nav-contact':'Kontakt',
+					'hero-sub':'Minecraft Entwickler • Server Administrator • Webentwickler',
+					'hero-badge':'🟢 Verfügbar für neue Projekte',
+					'hero-contact-btn':'Kontakt aufnehmen',
+					'about-heading':'Über mich',
+					'stats-heading':'Statistiken',
+					'ref-heading':'Referenzprojekt',
+					'projects-heading':'Entwickelte Systeme',
+					'skills-heading':'Skills',
+					'reviews-heading':'Bewertungen',
+					'contact-heading':'Kontakt',
+					'contact-primary-title':'Direkt kontaktieren',
+					'contact-discord':'Discord: hakubaa_',
+					'contact-email':'E-Mail: ',
+					'contact-form-title':'Kontaktformular',
+					'lbl-name':'Name',
+					'lbl-email':'E-Mail',
+					'lbl-country':'Land',
+					'lbl-phone':'Telefon (optional)',
+					'lbl-message':'Nachricht',
+					'contact-submit':'Senden',
+				},
+				en: {
+					'nav-about':'About',
+					'nav-stats':'Stats',
+					'nav-projects':'Projects',
+					'nav-contact':'Contact',
+					'hero-sub':'Minecraft Developer • Server Admin • Web Developer',
+					'hero-badge':'🟢 Available for new projects',
+					'hero-contact-btn':'Contact',
+					'about-heading':'About',
+					'stats-heading':'Statistics',
+					'ref-heading':'Reference Project',
+					'projects-heading':'Built Systems',
+					'skills-heading':'Skills',
+					'reviews-heading':'Reviews',
+					'contact-heading':'Contact',
+					'contact-primary-title':'Contact directly',
+					'contact-discord':'Discord: hakubaa_',
+					'contact-email':'Email: ',
+					'contact-form-title':'Contact form',
+					'lbl-name':'Name',
+					'lbl-email':'Email',
+					'lbl-country':'Country',
+					'lbl-phone':'Phone (optional)',
+					'lbl-message':'Message',
+					'contact-submit':'Send',
+				}
+			};
+
+			const setLang = (lang) => {
+				const map = translations[lang] || translations.de;
+				document.documentElement.lang = lang;
+				['nav-about','nav-stats','nav-projects','nav-contact','hero-sub','hero-badge','hero-contact-btn','contact-primary-title','contact-discord','contact-email','contact-form-title','lbl-name','lbl-email','lbl-country','lbl-phone','lbl-message'].forEach(id=>{
+					const el = document.getElementById(id);
+					if(!el) return;
+					if(id === 'contact-email'){
+						const mail = document.getElementById('mailto-link');
+						el.innerHTML = map[id] + '<a href="mailto:hakubaa@example.com' + '">' + 'hakubaa@example.com' + '</a>';
+						return;
+					}
+					if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.tagName === 'SELECT'){
+						if(map[id]) el.placeholder = map[id];
+						return;
+					}
+					el.textContent = map[id] || el.textContent;
+				});
+				// update buttons aria-pressed
+				document.getElementById('lang-de').setAttribute('aria-pressed', String(lang==='de'));
+				document.getElementById('lang-en').setAttribute('aria-pressed', String(lang==='en'));
+			};
+
+			document.getElementById('lang-de').addEventListener('click',()=>setLang('de'));
+			document.getElementById('lang-en').addEventListener('click',()=>setLang('en'));
+
+			// contact form handling: open mailto as fallback
+			const form = document.getElementById('contact-form');
+			const feedback = document.getElementById('contact-feedback');
+			form.addEventListener('submit', (e)=>{
+				e.preventDefault();
+				const name = document.getElementById('c-name').value.trim();
+				const email = document.getElementById('c-email').value.trim();
+				const country = document.getElementById('c-country').value;
+				const phone = document.getElementById('c-phone').value.trim();
+				const msg = document.getElementById('c-msg').value.trim();
+				if(!name || !email || !msg){
+					feedback.textContent = 'Bitte alle Pflichtfelder ausfüllen.';
+					feedback.classList.remove('sr-only');
+					return;
+				}
+				const subject = encodeURIComponent('Kontaktanfrage von ' + name);
+				const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nLand: ' + country + '\nTelefon: ' + phone + '\n\nNachricht:\n' + msg);
+				const mailto = 'mailto:hakubaa@example.com?subject=' + subject + '&body=' + body;
+				// try opening mail client
+				window.location.href = mailto;
+				feedback.textContent = 'E-Mail-Client geöffnet. Falls nicht, kopiere die E-Mail-Adresse und schreibe manuell.';
+				feedback.classList.remove('sr-only');
+			});
+
+			document.getElementById('contact-reset').addEventListener('click', ()=>{
+				form.reset();
+				feedback.textContent = '';
+				feedback.classList.add('sr-only');
+			});
+
+			// initialize default language
+			setLang('de');
+		})();
+	</script>
 </body>
 </html>
